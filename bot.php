@@ -9,8 +9,8 @@ Modified @ Farzain - zFz
 require_once('./line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
 
-$channelAccessToken = '<Channel-Access-Token>'; //sesuaikan 
-$channelSecret = '<Channel-Secret>';//sesuaikan
+$channelAccessToken = 't4Cp8Zal7wtaN5lP5Pu8Zwchc2s4b0nGEAw4Y6P+IXAYmzMAVg+Um0282+nlygawvfiRlTgZaG/hHdDmis6AkhlvReYn3UbxaxtNElPTgUhIgOE+MbkPYBjwYOwxGREuwjJafmnADojFClBrclDregdB04t89/1O/w1cDnyilFU='; //sesuaikan 
+$channelSecret = '0facf4ffa8bc6f6e805ed36bda1526b5';//sesuaikan
 
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
 
@@ -43,7 +43,7 @@ function shalat($keyword) {
     $response = Unirest\Request::get("$uri");
 
     $json = json_decode($response->raw_body, true);
-    $result = "Jadwal Shalat Sekitar ";
+    $result = "Jadwal Shalat Daerah ";
 	$result .= $json['location']['address'];
 	$result .= "\nTanggal : ";
 	$result .= $json['time']['date'];
@@ -69,7 +69,7 @@ function shalat($keyword) {
 
 //show menu, saat join dan command /menu
 if ($type == 'join' || $command == '/menu') {
-    $text = "Kenapa gua diundang ke grup lu? ketik /keyword kalau mau tahu gua berguna gk buat nie grup\n\nKlo lu gk suka ama gua, usir aja gua dari sini, ketik \keluar";
+    $text = "Thx for invite, ketk /kelar untuk mengeluarkan Mpuy";
     $balas = array(
         'replyToken' => $replyToken,
         'messages' => array(
@@ -83,7 +83,7 @@ if ($type == 'join' || $command == '/menu') {
 
 //pesan bergambar
 if($message['type']=='text') {
-	    if ($command == '/shalat') {
+	    if ($command == '/jshalat') {
 
         $result = shalat($options);
         $balas = array(
@@ -105,27 +105,27 @@ if($message['type']=='text') {
 							'messages' => array(
 								array(
 										'type' => 'text',					
-										'text' => 'Halo '.$profil->displayName.', Anda memilih menu 1,'
+										'text' => 'Halo '.$profil->displayName.', Kamu memilih menu 1,'
 									)
 							)
 						);
 				
 	}
 	else
-	if($pesan_datang=='2')
-	{
-		$get_sub = array();
-		$aa =   array(
-						'type' => 'image',									
-						'originalContentUrl' => 'https://medantechno.com/line/images/bolt/1000.jpg',
-						'previewImageUrl' => 'https://medantechno.com/line/images/bolt/240.jpg'	
-						
-					);
-		array_push($get_sub,$aa);	
+#	if($pesan_datang=='2')
+#	{
+#		$get_sub = array();
+#		$aa =   array(
+#						'type' => 'image',									
+#						'originalContentUrl' => 'https://medantechno.com/line/images/bolt/1000.jpg',
+#						'previewImageUrl' => 'https://medantechno.com/line/images/bolt/240.jpg'	
+#						
+#					);
+#		array_push($get_sub,$aa);	
 
 		$get_sub[] = array(
 									'type' => 'text',									
-									'text' => 'Halo '.$profil->displayName.', Anda memilih menu 2, harusnya gambar muncul.'
+									'text' => 'Halo '.$profil->displayName.', Kamu memilih menu 2, harusnya gambar muncul.'
 								);
 		
 		$balas = array(
@@ -134,20 +134,20 @@ if($message['type']=='text') {
 				 );	
 	}
 	else
-	if($pesan_datang=='3')
-	{
-		
-		$balas = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',					
-										'text' => 'Fungsi PHP base64_encode medantechno.com :'. base64_encode("medantechno.com")
-									)
-							)
-						);
-				
-	}
+#	if($pesan_datang=='3')
+#	{
+#		
+#		$balas = array(
+#							'replyToken' => $replyToken,														
+#							'messages' => array(
+#								array(
+#										'type' => 'text',					
+#										'text' => 'Fungsi PHP base64_encode medantechno.com :'. base64_encode("medantechno.com")
+#									)
+#							)
+#						);
+#				
+#	}
 	else
 	if($pesan_datang=='4')
 	{
@@ -157,7 +157,7 @@ if($message['type']=='text') {
 							'messages' => array(
 								array(
 										'type' => 'text',					
-										'text' => 'Jam Server Saya : '. date('Y-m-d H:i:s')
+										'text' => 'Jam Server Mpuy : '. date('Y-m-d H:i:s')
 									)
 							)
 						);
@@ -172,10 +172,8 @@ if($message['type']=='text') {
 							'messages' => array(
 								array(
 										'type' => 'location',					
-										'title' => 'Lokasi Saya.. Klik Detail',					
-										'address' => 'Medan',					
-										'latitude' => '3.521892',					
-										'longitude' => '98.623596' 
+										'title' => 'Lokasi Mpuy.. Klik Detail',					
+										'address' => 'Bogor',					
 									)
 							)
 						);
@@ -200,7 +198,7 @@ if($message['type']=='text') {
 							'messages' => array(
 								array(
 										'type' => 'text',					
-										'text' => 'Pesan ini dari medantechno.com'
+										'text' => 'Pesan ini dari Puy'
 									)
 							)
 						);
@@ -212,18 +210,18 @@ if($message['type']=='text') {
 
 	else{
 
-		$balas = array(
-							'replyToken' => $replyToken,														
-							'messages' => array(
-								array(
-										'type' => 'text',					
-										'text' => 'Halo.. Selamat datang di medantechno.com .        Untuk testing menu pilih 1,2,3,4,5 ... atau stiker'
-									)
-							)
-						);
-						
-	}
-
+#		$balas = array(
+#							'replyToken' => $replyToken,														
+#							'messages' => array(
+#								array(
+#										'type' => 'text',					
+#										'text' => 'Halo.. Selamat datang di medantechno.com .        Untuk testing menu pilih 1,2,3,4,5 ... atau stiker'
+#									)
+#							)
+#						);
+#						
+#	}
+#
 }else if($message['type']=='sticker')
 {	
 	$balas = array(
@@ -231,7 +229,7 @@ if($message['type']=='text') {
 							'messages' => array(
 								array(
 										'type' => 'text',									
-										'text' => 'Terimakasih stikernya... '										
+										'text' => 'wih tikel baru ya '										
 									
 									)
 							)
